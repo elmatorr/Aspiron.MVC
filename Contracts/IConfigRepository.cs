@@ -9,8 +9,8 @@ namespace Aspiron.MVC.Contracts
 {
     public interface IConfigRepository
     {
-        public Task<BaseBrowserPageModel> GetConfigValue(string operationName);
-        public Task<Boolean> SetConfigValue(string operationName, BaseBrowserPageModel pageModel);
+        public Task<BaseBrowserPageModel> GetConfigValueAsync(string operationName);
+        public Task<Boolean> SetConfigValueAsync(string operationName, BaseBrowserPageModel pageModel);
         
 
     }
