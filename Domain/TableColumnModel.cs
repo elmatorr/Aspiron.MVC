@@ -11,7 +11,12 @@ namespace Aspiron.MVC.Domain
     {
         [Required]
         public required string FieldName { get; set; }
-        public string HeaderText { get; set; } // New property for custom header text
+
+        // property for custom header text
+        public string HeaderText { get; set; }
+
+        // property for custom short text
+        public string ShortText { get; set; }
 
         // sequence of columns in table
         public int Sequence { get; set; }
@@ -28,7 +33,9 @@ namespace Aspiron.MVC.Domain
         // data type of column
         public EnumBasicDataTypes DataType { get; set; }
 
-
+        // media format of column, depends on UI table component
+        // e.g. hideAtMedia:'(min-width: 500px)'
+        public string MediaFormat { get; set; }
 
         public TableColumnModel()
         {

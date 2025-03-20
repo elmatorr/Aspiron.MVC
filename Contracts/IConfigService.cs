@@ -14,7 +14,6 @@ namespace Aspiron.MVC.Contracts
         public Task<Boolean> SetConfigValue(string operationName, BaseBrowserPageModel pageModel);
         */
         
-
     }
 
 }

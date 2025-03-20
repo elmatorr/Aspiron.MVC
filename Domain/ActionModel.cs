@@ -15,6 +15,7 @@ namespace Aspiron.MVC.Domain
         public string? OnClick { get; set; } // e.g., "addToWatchlist"
 
         private string _idField = "Id"; // Default to "Id"
+
         // Field name to get the ID value from the row data 
         public string IdField
         {

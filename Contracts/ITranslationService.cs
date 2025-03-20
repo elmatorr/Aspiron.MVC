@@ -12,6 +12,6 @@ namespace Aspiron.MVC.Contracts
         public string GetLanguage();
 
         public Task<string> GetTranslation(string key, string? defaultValue = null);
-        public Task<string> SetTranslation(string key, string language);
+        public Task<string> SetTranslation(string key, string value, string language);
     }
 }
