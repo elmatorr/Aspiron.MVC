@@ -1,13 +1,10 @@
 ﻿using Aspiron.MVC.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Aspiron.MVC.Controllers
 {
+    // generic controller for table type pages
+
     public class BaseMVCController<TData> : Controller
     {
         protected IConfigService config { get; }
