@@ -1,6 +1,6 @@
 ﻿namespace Aspiron.MVC.Contracts
 {
-    public interface IConfigService : IConfigRepository
+    public interface IConfigService<TKey> : IConfigRepository<TKey>
     {
         /*
         public Task<BaseBrowserPageModel> GetConfigValue(string operationName);

@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace Aspiron.MVC.Repositories
 {
-    public class ConfigFileRepository : IConfigRepository
+    public class ConfigFileRepository : IConfigRepository<string>
     {
         private string _configDirectory;
 
@@ -13,12 +13,12 @@ namespace Aspiron.MVC.Repositories
             _configDirectory = configDirectory;
         }
 
-        public Task<List<BaseBrowserPageModel>> GetAllAsync()
+        public Task<List<ConfigListItem<string>>> GetAllAsync()
         {
             // Get all files that match the pattern
             var files = Directory.GetFiles(_configDirectory, $"*.v*.json");
 
-            var result = new List<BaseBrowserPageModel>();
+            var result = new List<ConfigListItem<string>>();
 
             foreach (var file in files)
             {
@@ -32,7 +32,15 @@ namespace Aspiron.MVC.Repositories
 
                 // Deserialize the JSON content into a BaseBrowserPageModel object
                 var pageConfig = JsonSerializer.Deserialize<BaseBrowserPageModel>(json, options);
-                result.Add(pageConfig);
+
+                // Create a ConfigListItem with the filename as key and name
+                var configListItem = new ConfigListItem<string>
+                {
+                    Key = Path.GetFileName(file),
+                    Name = Path.GetFileName(file)
+                };
+
+                result.Add(configListItem);
             }
 
             return Task.FromResult(result);
