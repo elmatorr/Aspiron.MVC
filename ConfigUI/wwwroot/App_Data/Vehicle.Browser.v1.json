@@ -1,0 +1,117 @@
+{
+  "TableColumns": {
+    "Columns": [
+      {
+        "FieldName": "Id",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 0,
+        "Visible": false,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 9,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "RegistrationNo",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 1,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 13,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "VinCode",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 2,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 13,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "Year",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 3,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 13,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "Make",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 4,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 13,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "Model",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 5,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 13,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "OwnerId",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 6,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 9,
+        "MediaFormat": null
+      }
+    ],
+    "Actions": [
+      {
+        "CssVisual": "btn-primary",
+        "CssAction": "edit-btn",
+        "DisplayText": "Edit",
+        "OnClick": null,
+        "IdField": "Id",
+        "Area": "Asset",
+        "Controller": "Controller",
+        "Action": "Details",
+        "UrlTemplate": "/Asset/Controller/Details/__id__"
+      }
+    ],
+    "CondColors": []
+  },
+  "Action": {
+    "CssVisual": "btn-primary",
+    "CssAction": "edit-btn",
+    "DisplayText": "Details",
+    "OnClick": null,
+    "IdField": "Id",
+    "Area": "Asset",
+    "Controller": "Controller",
+    "Action": "Details",
+    "UrlTemplate": "/Asset/Controller/Details/__id__"
+  },
+  "Version": 1,
+  "PageTexts": {
+    "OperationName": "Vehicle.Browser",
+    "BrowserTabTitle": "Vehicle Browser",
+    "ControllerTitle": "",
+    "ActionTitle": "",
+    "ActionDescription": ""
+  },
+  "Layout": "~/Views/Shared/_Layout.cshtml"
+}

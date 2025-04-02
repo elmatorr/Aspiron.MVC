@@ -2,7 +2,7 @@
 {
     public class Vehicle
     {
-        public int PropertyId { get; set; }
+        public int Id { get; set; }
         public string? RegistrationNo { get; set; }
         public string? VinCode { get; set; }
         public int? Year { get; set; }

@@ -8,9 +8,15 @@ namespace Aspiron.MVC.Repositories
     {
         private string _configDirectory;
 
-        public ConfigFileRepository(string configDirectory) 
+        public ConfigFileRepository(string configDirectory)
         {
             _configDirectory = configDirectory;
+
+            // Ensure the directory exists
+            if (!Directory.Exists(_configDirectory))
+            {
+                Directory.CreateDirectory(_configDirectory);
+            }
         }
 
         public Task<List<ConfigListItem>> GetAllAsync()
@@ -46,14 +52,14 @@ namespace Aspiron.MVC.Repositories
             return Task.FromResult(result);
         }
 
-        public async Task<BaseBrowserPageModel> GetConfigValueAsync(string operationName)
+        public async Task<BaseBrowserPageModel?> GetConfigValueAsync(string operationName)
         {
             // Get all files that match the pattern
             var files = Directory.GetFiles(_configDirectory, $"{operationName}.v*.json");
 
             if (files.Length == 0)
             {
-                return new BaseBrowserPageModel { };
+                return null;
             }
 
             // Extract version numbers and find the highest one

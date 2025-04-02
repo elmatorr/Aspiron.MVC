@@ -11,7 +11,11 @@ namespace ConfigUI
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            // Configure the JSON serialization options to preserve the property names' case.
+            builder.Services.AddControllersWithViews().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
+            });
 
             // Register ConfigFileRepository with the file path
             builder.Services.AddScoped<IConfigRepository>(provider =>
@@ -22,6 +26,8 @@ namespace ConfigUI
             });
 
             builder.Services.AddScoped<IConfigService, ConfigService>();
+            builder.Services.AddScoped<ITranslationService, TranslationService>();
+            builder.Services.AddScoped<ICacheProvider, MemCacheProvider>();
 
             var app = builder.Build();
 

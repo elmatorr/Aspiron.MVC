@@ -1,0 +1,98 @@
+﻿@using Aspiron.MVC.Domain;
+@using System.Text.Json;
+@model BaseBrowserPageModel
+
+
+@{
+    ViewData["Title"] = Model.PageTexts.BrowserTabTitle;
+    var tableColumnsJson = JsonSerializer.Serialize(Model.TableColumns); // Serialize the Model.TableColumns
+}
+
+<link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<h1>@Model.PageTexts.ControllerTitle</h1>
+<h2>@Model.PageTexts.ActionTitle</h2>
+
+<div class="card">
+    <div class="card-body">
+        <table id="dataTable" class="table table-bordered dt-responsive nowrap w-100">
+            <thead>
+                <tr id="tableHeaders">
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            let tableHeaders = $("#tableHeaders");
+            let columns = [];
+
+            // Parse the JSON string into a JavaScript object
+            let tableColumns = @Html.Raw(tableColumnsJson);
+            console.log("Columns", tableColumns);
+
+            if (tableColumns && tableColumns.Columns && tableColumns.Columns.length > 0) {
+                tableColumns.Columns.forEach(col => {
+                    tableHeaders.append(`<th>${col.HeaderText || col.FieldName}</th>`);
+                    columns.push({ "data": col.FieldName, "visible": col.Visible });
+                    console.log("Pushing Header", col);
+                });
+            }
+
+            if (tableColumns && tableColumns.Actions && tableColumns.Actions.length > 0) {
+                tableHeaders.append("<th>Actions</th>");
+                columns.push({
+                    "data": null,
+                    "render": function (rowData, type, row) {
+                        let buttonsHtml = '';
+                        tableColumns.Actions.forEach(button => {
+                            let idValue = row[button.IdField] || row.Id;
+                            let url = button.UrlTemplate.replace('__id__', idValue);
+                            buttonsHtml += `<a href="${url}" class="btn btn-sm ${button.CssVisual} ${button.CssAction}">${button.DisplayText}</a> `;
+                        });
+                        return buttonsHtml;
+                    },
+                    "orderable": false
+                });
+            }
+
+            function fetchTableData() {
+                return fetch("@Url.Action("FetchData")")
+                    .then(res => res.json())
+                    .then(response => {
+                        let data = response;
+
+                        $('#dataTable').DataTable({
+                            "data": data,
+                            "columns": columns,
+                            "responsive": true,
+                            "lengthChange": true,
+                            "buttons": ['copy', 'excel', 'pdf', 'colvis']
+                        }).buttons().container().appendTo('#dataTable_wrapper .col-md-6:eq(0)');
+                    })
+                    .catch(error => console.error("Error fetching data:", error));
+            }
+
+            fetchTableData();
+        });
+    </script>
+}

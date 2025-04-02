@@ -1,0 +1,139 @@
+{
+  "TableColumns": {
+    "Columns": [
+      {
+        "FieldName": "Id",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 0,
+        "Visible": false,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 9,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "FirstName",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 1,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 13,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "LastName",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 2,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 13,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "MiddleName",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 3,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 13,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "IsCompany",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 4,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 0,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "Birthdate",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 5,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 13,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "IdNo",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 6,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 13,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "Comments",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 7,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 13,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "StatusId",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 8,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 9,
+        "MediaFormat": null
+      }
+    ],
+    "Actions": [
+      {
+        "CssVisual": "btn-primary",
+        "CssAction": "edit-btn",
+        "DisplayText": "Edit",
+        "OnClick": null,
+        "IdField": "Id",
+        "Area": "Asset",
+        "Controller": "Controller",
+        "Action": "Details",
+        "UrlTemplate": "/Asset/Controller/Details/__id__"
+      }
+    ],
+    "CondColors": []
+  },
+  "Action": {
+    "CssVisual": "btn-primary",
+    "CssAction": "edit-btn",
+    "DisplayText": "Details",
+    "OnClick": null,
+    "IdField": "Id",
+    "Area": "Asset",
+    "Controller": "Controller",
+    "Action": "Details",
+    "UrlTemplate": "/Asset/Controller/Details/__id__"
+  },
+  "Version": 1,
+  "PageTexts": {
+    "OperationName": "Person.Browser",
+    "BrowserTabTitle": "Person Browser",
+    "ControllerTitle": "",
+    "ActionTitle": "",
+    "ActionDescription": ""
+  },
+  "Layout": "~/Views/Shared/_Layout.cshtml"
+}
