@@ -10,13 +10,12 @@ namespace Aspiron.MVC.Domain
     {
         public List<TableColumnModel> Columns { get; set; }
         public List<ActionModel> Actions { get; set; } // New property for buttons
-        public List<CondColorModel> CondColors { get; set; }
 
         public TableColumnsModel()
         {
             Columns = [];
             Actions = [];
-            CondColors = [];
+            //CondColors = [];
         }
     }
 }
