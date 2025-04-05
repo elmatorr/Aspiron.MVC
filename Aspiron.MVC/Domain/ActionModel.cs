@@ -41,7 +41,7 @@ namespace Aspiron.MVC.Domain
             CssVisual = "btn-primary";
             CssAction = "edit-btn";
             DisplayText = "Details";
-            Area = "Asset";
+            Area = "";
             Controller = "Controller";
             Action = "Details";
         }

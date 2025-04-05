@@ -13,7 +13,7 @@
         "MediaFormat": null
       },
       {
-        "FieldName": "FirstName",
+        "FieldName": "InvoiceNumber",
         "HeaderText": null,
         "ShortText": null,
         "Sequence": 1,
@@ -24,7 +24,7 @@
         "MediaFormat": null
       },
       {
-        "FieldName": "LastName",
+        "FieldName": "CustomerName",
         "HeaderText": null,
         "ShortText": null,
         "Sequence": 2,
@@ -35,40 +35,40 @@
         "MediaFormat": null
       },
       {
-        "FieldName": "MiddleName",
+        "FieldName": "CreatedAt",
         "HeaderText": null,
         "ShortText": null,
         "Sequence": 3,
         "Visible": true,
         "Width": 100,
         "ResponsivePriority": 1,
-        "DataType": 13,
+        "DataType": 3,
         "MediaFormat": null
       },
       {
-        "FieldName": "IsCompany",
+        "FieldName": "DueDate",
         "HeaderText": null,
         "ShortText": null,
         "Sequence": 4,
         "Visible": true,
         "Width": 100,
         "ResponsivePriority": 1,
-        "DataType": 0,
+        "DataType": 3,
         "MediaFormat": null
       },
       {
-        "FieldName": "Birthdate",
+        "FieldName": "Amount",
         "HeaderText": null,
         "ShortText": null,
         "Sequence": 5,
         "Visible": true,
         "Width": 100,
         "ResponsivePriority": 1,
-        "DataType": 13,
+        "DataType": 6,
         "MediaFormat": null
       },
       {
-        "FieldName": "IdNo",
+        "FieldName": "Status",
         "HeaderText": null,
         "ShortText": null,
         "Sequence": 6,
@@ -79,25 +79,25 @@
         "MediaFormat": null
       },
       {
-        "FieldName": "Comments",
+        "FieldName": "TaxAmount",
         "HeaderText": null,
         "ShortText": null,
         "Sequence": 7,
         "Visible": true,
         "Width": 100,
         "ResponsivePriority": 1,
-        "DataType": 13,
+        "DataType": 6,
         "MediaFormat": null
       },
       {
-        "FieldName": "StatusId",
+        "FieldName": "TotalAmount",
         "HeaderText": null,
         "ShortText": null,
         "Sequence": 8,
         "Visible": true,
         "Width": 100,
         "ResponsivePriority": 1,
-        "DataType": 9,
+        "DataType": 6,
         "MediaFormat": null
       }
     ],
@@ -113,24 +113,13 @@
         "Action": "Details",
         "UrlTemplate": "/Area/Controller/Details/__id__"
       }
-    ],
-    "CondColors": []
+    ]
   },
-  "Action": {
-    "CssVisual": "btn-primary",
-    "CssAction": "edit-btn",
-    "DisplayText": "Details",
-    "OnClick": null,
-    "IdField": "Id",
-    "Area": "",
-    "Controller": "Controller",
-    "Action": "Details",
-    "UrlTemplate": "/Area/Controller/Details/__id__"
-  },
+  "CondColors": [],
   "Version": 1,
   "PageTexts": {
-    "OperationName": "Person.Browser",
-    "BrowserTabTitle": "Person Browser",
+    "OperationName": "Invoice.Browser",
+    "BrowserTabTitle": "Invoice Browser",
     "ControllerTitle": "",
     "ActionTitle": "",
     "ActionDescription": ""

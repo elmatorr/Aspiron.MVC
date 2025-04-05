@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.TagHelpers.Cache;
 
 namespace ConfigUI.Controllers
 {
-    public class ConfigurationController : BrowserMVCController<BaseBrowserPageModel>
+    public class ConfigurationController : BrowserMVCController<ConfigListItem>
     {
         public ConfigurationController(IConfigService config, ILogger<ConfigurationController> logger, ITranslationService translation, ICacheProvider cacheProvider)
             : base(config, logger, translation, cacheProvider)
@@ -14,9 +14,10 @@ namespace ConfigUI.Controllers
 
         }
 
-        public IActionResult Index()
+        public override async Task<IEnumerable<ConfigListItem>> FetchData(Dictionary<string, string>? queryParams)
         {
-            return View();
+            var configs = await config.GetAllAsync();
+            return configs.AsEnumerable();
         }
     }
 }

@@ -1,0 +1,39 @@
+{
+  "TableColumns": {
+    "Columns": [
+      {
+        "FieldName": "Key",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 0,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 13,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "Name",
+        "HeaderText": null,
+        "ShortText": null,
+        "Sequence": 1,
+        "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 13,
+        "MediaFormat": null
+      }
+    ],
+    "Actions": []
+  },
+  "CondColors": [],
+  "Version": 1,
+  "PageTexts": {
+    "OperationName": "Configuration.Browser",
+    "BrowserTabTitle": "Configuration Browser",
+    "ControllerTitle": "Configuration",
+    "ActionTitle": "Index",
+    "ActionDescription": ""
+  },
+  "Layout": "~/Views/Shared/_Layout.cshtml"
+}

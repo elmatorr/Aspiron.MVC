@@ -86,10 +86,10 @@
         "DisplayText": "Edit",
         "OnClick": null,
         "IdField": "Id",
-        "Area": "Asset",
+        "Area": "",
         "Controller": "Controller",
         "Action": "Details",
-        "UrlTemplate": "/Asset/Controller/Details/__id__"
+        "UrlTemplate": "/Area/Controller/Details/__id__"
       }
     ],
     "CondColors": []
@@ -100,10 +100,10 @@
     "DisplayText": "Details",
     "OnClick": null,
     "IdField": "Id",
-    "Area": "Asset",
+    "Area": "",
     "Controller": "Controller",
     "Action": "Details",
-    "UrlTemplate": "/Asset/Controller/Details/__id__"
+    "UrlTemplate": "/Area/Controller/Details/__id__"
   },
   "Version": 1,
   "PageTexts": {

@@ -57,8 +57,8 @@ namespace Aspiron.MVC.Controllers
             var pageConf = new BaseBrowserPageModel();
             pageConf.PageTexts.OperationName = PageModel.PageTexts.OperationName;
             pageConf.PageTexts.BrowserTabTitle = PageModel.PageTexts.BrowserTabTitle;
-            PageModel.PageTexts.ControllerTitle = PageModel.PageTexts.ControllerTitle;
-            PageModel.PageTexts.ActionTitle = PageModel.PageTexts.ActionTitle;
+            pageConf.PageTexts.ControllerTitle = PageModel.PageTexts.ControllerTitle;
+            pageConf.PageTexts.ActionTitle = PageModel.PageTexts.ActionTitle;
 
 
             int columnCounter = 0;
