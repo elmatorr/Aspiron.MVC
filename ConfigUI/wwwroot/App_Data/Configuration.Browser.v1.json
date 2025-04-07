@@ -24,7 +24,19 @@
         "MediaFormat": null
       }
     ],
-    "Actions": []
+    "Actions": [
+      {
+        "CssVisual": "btn-primary",
+        "CssAction": "edit-btn",
+        "DisplayText": "Details",
+        "OnClick": null,
+        "IdField": "Key",
+        "Area": "",
+        "Controller": "Configuration",
+        "Action": "Details",
+        "UrlTemplate": "Configuration/Details/__id__"
+      }
+    ]
   },
   "CondColors": [],
   "Version": 1,

@@ -8,7 +8,6 @@
         public BaseBrowserPageModel()
         {
             TableColumns = new TableColumnsModel();
-            //Action = new ActionModel();
             CondColors = [];
         }
     }

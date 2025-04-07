@@ -46,7 +46,7 @@
         $(document).ready(function () {
             const tableColumns = @Html.Raw(tableColumnsJson); // Use the serialized JSON string
             const fetchUrl = '@Url.Action("FetchData")'; // Replace with your actual action URL
-            const baseUrl = '@Url.Content("~/")'; // Base URL for relative paths
+            const baseUrl = '@Context.Request.Scheme://@Context.Request.Host/'; // Base URL for relative paths
             initializeDynamicDataTable(tableColumns, "#dataTable", "#tableHeaders", baseUrl, fetchUrl);
         });
     </script>

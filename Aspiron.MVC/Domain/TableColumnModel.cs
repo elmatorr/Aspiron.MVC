@@ -7,11 +7,22 @@ namespace Aspiron.MVC.Domain
         [Required]
         public required string FieldName { get; set; }
 
-        // property for custom header text
-        public string HeaderText { get; set; }
+        private string _headerText = string.Empty;
+        private string _shortText = string.Empty;
 
-        // property for custom short text
-        public string ShortText { get; set; }
+        // property for custom header text, use field name if not set
+        public string HeaderText
+        {
+            get => string.IsNullOrEmpty(_headerText) ? FieldName : _headerText;
+            set => _headerText = value;
+        }
+
+        // property for custom short text, use field name if not set
+        public string ShortText
+        {
+            get => string.IsNullOrEmpty(_shortText) ? FieldName : _shortText;
+            set => _shortText = value;
+        }
 
         // sequence of columns in table
         public int Sequence { get; set; }
@@ -30,7 +41,7 @@ namespace Aspiron.MVC.Domain
 
         // media format of column, depends on UI table component
         // e.g. hideAtMedia:'(min-width: 500px)'
-        public string MediaFormat { get; set; }
+        public string? MediaFormat { get; set; } = string.Empty;
 
         public TableColumnModel()
         {

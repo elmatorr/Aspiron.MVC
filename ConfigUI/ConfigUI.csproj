@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Aspiron.MVC\Aspiron.MVC.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Configuration\" />
+  </ItemGroup>
+
 </Project>

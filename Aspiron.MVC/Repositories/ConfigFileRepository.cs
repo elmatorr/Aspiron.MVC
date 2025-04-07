@@ -52,8 +52,24 @@ namespace Aspiron.MVC.Repositories
             return Task.FromResult(result);
         }
 
-        public async Task<BaseBrowserPageModel?> GetConfigValueAsync(string operationName)
+        public async Task<BaseBrowserPageModel?> GetConfigValueAsync(string operationName, int? version = null)
         {
+            if (version != null)
+            {
+                // If a specific version is requested, return that version
+                var filePath = Path.Combine(_configDirectory, $"{operationName}.v{version}.json");
+                if (File.Exists(filePath))
+                {
+                    var jsonVer = await System.IO.File.ReadAllTextAsync(filePath);
+                    var optionsVer = new JsonSerializerOptions
+                    {
+                        WriteIndented = true
+                    };
+                    return JsonSerializer.Deserialize<BaseBrowserPageModel>(jsonVer, optionsVer);
+                }
+                return null;
+            }
+
             // Get all files that match the pattern
             var files = Directory.GetFiles(_configDirectory, $"{operationName}.v*.json");
 

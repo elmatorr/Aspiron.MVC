@@ -1,0 +1,251 @@
+﻿@using Aspiron.MVC.Domain;
+@model BaseBrowserPageModel
+
+@{
+    ViewData["Title"] = "Edit Configuration";
+}
+
+<h2>Edit Configuration</h2>
+
+<form method="post" asp-action="Save">
+    <input type="hidden" name="Version" value="@Model.Version" />
+    <input type="hidden" name="id" value="@ViewBag.ConfigKey" />
+
+    <div class="mb-4">
+        <h4>Page Texts</h4>
+        <div class="row">
+            <div class="col-md-6">
+                <label>BrowserTabTitle</label>
+                <input class="form-control" name="PageTexts.BrowserTabTitle" value="@Model.PageTexts.BrowserTabTitle" />
+            </div>
+            <div class="col-md-6">
+                <label>OperationName</label>
+                <input class="form-control" name="PageTexts.OperationName" value="@Model.PageTexts.OperationName" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>ControllerTitle</label>
+                <input class="form-control" name="PageTexts.ControllerTitle" value="@Model.PageTexts.ControllerTitle" />
+            </div>
+            <div class="col-md-6">
+                <label>ActionTitle</label>
+                <input class="form-control" name="PageTexts.ActionTitle" value="@Model.PageTexts.ActionTitle" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label>Action Description</label>
+                <input class="form-control"
+                       name="PageTexts.ActionDescription"
+                       value="@Model.PageTexts.ActionDescription" />
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mb-4">
+        <h4>Table Columns</h4>
+        <div id="table-columns-container">
+            @for (int i = 0; i < Model.TableColumns.Columns.Count; i++)
+            {
+                var col = Model.TableColumns.Columns[i];
+                <div class="column-item border p-2 mb-2">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label>Field Name</label>
+                            <input class="form-control" name="TableColumns.Columns[@i].FieldName" value="@col.FieldName" />
+                        </div>
+                        <div class="col-md-1">
+                            <label>Sequence</label>
+                            <input class="form-control" name="TableColumns.Columns[@i].Sequence" value="@col.Sequence" />
+                        </div>
+                        <div class="col-md-2">
+                            <label>Header Text</label>
+                            <input class="form-control" name="TableColumns.Columns[@i].HeaderText" value="@col.HeaderText" />
+                        </div>
+                        <div class="col-md-2">
+                            <label>Short Text</label>
+                            <input class="form-control" name="TableColumns.Columns[@i].ShortText" value="@col.ShortText" />
+                        </div>
+                        <div class="col-md-1">
+                            <label>Visible</label>
+                            <input type="checkbox" name="TableColumns.Columns[@i].Visible" value="true" @(col.Visible ? "checked" : "") />
+                        </div>
+                        <div class="col-md-1">
+                            <label>Width</label>
+                            <input class="form-control" name="TableColumns.Columns[@i].Width" value="@col.Width" />
+                        </div>
+                        <div class="col-md-2">
+                            <label>Data Type</label>
+                            <select class="form-select" name="TableColumns.Columns[@i].DataType">
+                                @{
+                                    foreach (EnumBasicDataTypes type in Enum.GetValues(typeof(EnumBasicDataTypes)))
+                                    {
+                                        var option = new TagBuilder("option");
+                                        option.Attributes["value"] = ((int)type).ToString();
+                                        if (col.DataType == type)
+                                        {
+                                            option.Attributes["selected"] = "selected";
+                                        }
+                                        option.InnerHtml.Append(type.ToString());
+                                        @option
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm mt-2 remove-column">Remove</button>
+                </div>
+            }
+        </div>
+        <button type="button" id="add-column" class="btn btn-outline-primary mt-2">Add Column</button>
+    </div>
+
+    <div class="mb-4">
+        <h4>Actions</h4>
+        <div id="actions-container">
+            @for (int i = 0; i < Model.TableColumns.Actions.Count; i++)
+            {
+                var action = Model.TableColumns.Actions[i];
+                <div class="action-item border p-2 mb-2">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Text</label>
+                            <input class="form-control" name="TableColumns.Actions[@i].DisplayText" value="@action.DisplayText" />
+                        </div>
+                        <div class="col-md-2">
+                            <label>CssVisual</label>
+                            <input class="form-control" name="TableColumns.Actions[@i].CssVisual" value="@action.CssVisual" />
+                        </div>
+                        <div class="col-md-2">
+                            <label>CssAction</label>
+                            <input class="form-control" name="TableColumns.Actions[@i].CssAction" value="@action.CssAction" />
+                        </div>
+                        <div class="col-md-2">
+                            <label>Area</label>
+                            <input class="form-control" name="TableColumns.Actions[@i].Area" value="@action.Area" />
+                        </div>
+                        <div class="col-md-2">
+                            <label>Controller</label>
+                            <input class="form-control" name="TableColumns.Actions[@i].Controller" value="@action.Controller" />
+                        </div>
+                        <div class="col-md-2">
+                            <label>Action</label>
+                            <input class="form-control" name="TableColumns.Actions[@i].Action" value="@action.Action" />
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm mt-2 remove-action">Remove</button>
+                </div>
+            }
+        </div>
+        <button type="button" id="add-action" class="btn btn-outline-primary mt-2">Add Action</button>
+    </div>
+
+    <div class="mb-4">
+        <h4>Conditional Colors</h4>
+        <div id="colors-container">
+            @for (int i = 0; i < Model.CondColors.Count; i++)
+            {
+                var color = Model.CondColors[i];
+                <div class="color-item border p-2 mb-2 row">
+                    <div class="col-md-2">
+                        <label>Sequence</label>
+                        <input class="form-control" name="CondColors[@i].Sequence" value="@color.Sequence" />
+                    </div>
+                    <div class="col-md-4">
+                        <label>Condition</label>
+                        <input class="form-control" name="CondColors[@i].Condition" value="@color.Condition" />
+                    </div>
+                    <div class="col-md-3">
+                        <label>Back Color</label>
+                        <input class="form-control" name="CondColors[@i].BackColor" value="@color.BackColor" />
+                    </div>
+                    <div class="col-md-3">
+                        <label>Font Color</label>
+                        <input class="form-control" name="CondColors[@i].FontColor" value="@color.FontColor" />
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm remove-color mt-2">Remove</button>
+                </div>
+            }
+        </div>
+        <button type="button" id="add-color" class="btn btn-outline-primary mt-2">Add Color Rule</button>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        let columnIndex = @Model.TableColumns.Columns.Count;
+        let actionIndex = @Model.TableColumns.Actions.Count;
+        let colorIndex = @Model.CondColors.Count;
+
+        $('#add-column').click(function () {
+            const html = `
+            <div class="column-item border p-2 mb-2">
+                <div class="row">
+                    <div class="col-md-3"><input class="form-control" name="TableColumns.Columns[${columnIndex}].FieldName" placeholder="Field" /></div>
+                    <div class="col-md-3"><input class="form-control" name="TableColumns.Columns[${columnIndex}].HeaderText" placeholder="Header" /></div>
+                    <div class="col-md-2"><input class="form-control" name="TableColumns.Columns[${columnIndex}].ShortText" placeholder="Short" /></div>
+                    <div class="col-md-1"><input type="checkbox" name="TableColumns.Columns[${columnIndex}].Visible" checked /></div>
+                    <div class="col-md-1"><input class="form-control" name="TableColumns.Columns[${columnIndex}].Width" value="100" /></div>
+                    <div class="col-md-2">
+                        <select class="form-select" name="TableColumns.Columns[${columnIndex}].DataType">
+                            <option value="0">String</option>
+                            <option value="1">Number</option>
+                            <option value="2">Date</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-danger btn-sm mt-2 remove-column">Remove</button>
+            </div>`;
+            $('#table-columns-container').append(html);
+            columnIndex++;
+        });
+
+        $('#table-columns-container').on('click', '.remove-column', function () {
+            $(this).closest('.column-item').remove();
+        });
+
+        $('#add-action').click(function () {
+            const html = `
+            <div class="action-item border p-2 mb-2">
+                <div class="row">
+                    <div class="col-md-2"><input class="form-control" name="TableColumns.Actions[${actionIndex}].DisplayText" placeholder="Text" /></div>
+                    <div class="col-md-2"><input class="form-control" name="TableColumns.Actions[${actionIndex}].CssVisual" value="btn-primary" /></div>
+                    <div class="col-md-2"><input class="form-control" name="TableColumns.Actions[${actionIndex}].CssAction" /></div>
+                    <div class="col-md-2"><input class="form-control" name="TableColumns.Actions[${actionIndex}].Area" /></div>
+                    <div class="col-md-2"><input class="form-control" name="TableColumns.Actions[${actionIndex}].Controller" /></div>
+                    <div class="col-md-2"><input class="form-control" name="TableColumns.Actions[${actionIndex}].Action" /></div>
+                </div>
+                <button type="button" class="btn btn-danger btn-sm mt-2 remove-action">Remove</button>
+            </div>`;
+            $('#actions-container').append(html);
+            actionIndex++;
+        });
+
+        $('#actions-container').on('click', '.remove-action', function () {
+            $(this).closest('.action-item').remove();
+        });
+
+        $('#add-color').click(function () {
+            const html = `
+            <div class="color-item border p-2 mb-2 row">
+                <div class="col-md-2"><input class="form-control" name="CondColors[${colorIndex}].Sequence" value="0" /></div>
+                <div class="col-md-4"><input class="form-control" name="CondColors[${colorIndex}].Condition" placeholder="Condition" /></div>
+                <div class="col-md-3"><input class="form-control" name="CondColors[${colorIndex}].BackColor" placeholder="Back Color" /></div>
+                <div class="col-md-3"><input class="form-control" name="CondColors[${colorIndex}].FontColor" placeholder="Font Color" /></div>
+                <button type="button" class="btn btn-danger btn-sm remove-color mt-2">Remove</button>
+            </div>`;
+            $('#colors-container').append(html);
+            colorIndex++;
+        });
+
+        $('#colors-container').on('click', '.remove-color', function () {
+            $(this).closest('.color-item').remove();
+        });
+    </script>
+}
