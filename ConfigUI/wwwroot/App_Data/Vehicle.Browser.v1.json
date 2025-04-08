@@ -2,81 +2,81 @@
   "TableColumns": {
     "Columns": [
       {
-        "FieldName": "Id",
-        "HeaderText": null,
-        "ShortText": null,
-        "Sequence": 0,
-        "Visible": false,
-        "Width": 100,
-        "ResponsivePriority": 1,
-        "DataType": 9,
-        "MediaFormat": null
-      },
-      {
         "FieldName": "RegistrationNo",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "RegistrationNo",
+        "ShortText": "RegistrationNo",
         "Sequence": 1,
         "Visible": true,
         "Width": 100,
         "ResponsivePriority": 1,
         "DataType": 13,
-        "MediaFormat": null
+        "MediaFormat": ""
       },
       {
         "FieldName": "VinCode",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "VinCode",
+        "ShortText": "VinCode",
         "Sequence": 2,
         "Visible": true,
         "Width": 100,
         "ResponsivePriority": 1,
         "DataType": 13,
-        "MediaFormat": null
+        "MediaFormat": ""
       },
       {
-        "FieldName": "Year",
-        "HeaderText": null,
-        "ShortText": null,
+        "FieldName": "Make",
+        "HeaderText": "Make",
+        "ShortText": "Make",
         "Sequence": 3,
         "Visible": true,
         "Width": 100,
         "ResponsivePriority": 1,
         "DataType": 13,
-        "MediaFormat": null
+        "MediaFormat": ""
       },
       {
-        "FieldName": "Make",
-        "HeaderText": null,
-        "ShortText": null,
+        "FieldName": "Model",
+        "HeaderText": "Model",
+        "ShortText": "Model",
         "Sequence": 4,
         "Visible": true,
         "Width": 100,
         "ResponsivePriority": 1,
         "DataType": 13,
-        "MediaFormat": null
+        "MediaFormat": ""
       },
       {
-        "FieldName": "Model",
-        "HeaderText": null,
-        "ShortText": null,
+        "FieldName": "Year",
+        "HeaderText": "Year",
+        "ShortText": "Year",
         "Sequence": 5,
         "Visible": true,
-        "Width": 100,
+        "Width": 40,
         "ResponsivePriority": 1,
-        "DataType": 13,
-        "MediaFormat": null
+        "DataType": 9,
+        "MediaFormat": ""
       },
       {
-        "FieldName": "OwnerId",
-        "HeaderText": null,
-        "ShortText": null,
+        "FieldName": "Id",
+        "HeaderText": "Key field",
+        "ShortText": "Key field",
         "Sequence": 6,
-        "Visible": true,
+        "Visible": false,
         "Width": 100,
         "ResponsivePriority": 1,
         "DataType": 9,
-        "MediaFormat": null
+        "MediaFormat": ""
+      },
+      {
+        "FieldName": "OwnerId",
+        "HeaderText": "OwnerId",
+        "ShortText": "OwnerId",
+        "Sequence": 7,
+        "Visible": false,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 9,
+        "MediaFormat": ""
       }
     ],
     "Actions": [
@@ -86,32 +86,45 @@
         "DisplayText": "Edit",
         "OnClick": null,
         "IdField": "Id",
-        "Area": "",
-        "Controller": "Controller",
+        "Area": null,
+        "Controller": "Vehicle",
         "Action": "Details",
-        "UrlTemplate": "/Area/Controller/Details/__id__"
+        "UrlTemplate": "Vehicle/Details/__id__"
+      },
+      {
+        "CssVisual": "btn-danger",
+        "CssAction": "edit-btn",
+        "DisplayText": "Delete",
+        "OnClick": null,
+        "IdField": "Id",
+        "Area": null,
+        "Controller": "Vehicle",
+        "Action": "Delete",
+        "UrlTemplate": "Vehicle/Delete/__id__"
       }
-    ],
-    "CondColors": []
+    ]
   },
-  "Action": {
-    "CssVisual": "btn-primary",
-    "CssAction": "edit-btn",
-    "DisplayText": "Details",
-    "OnClick": null,
-    "IdField": "Id",
-    "Area": "",
-    "Controller": "Controller",
-    "Action": "Details",
-    "UrlTemplate": "/Area/Controller/Details/__id__"
-  },
+  "CondColors": [
+    {
+      "Sequence": 1,
+      "Condition": "Year \u003C currentYear - 10",
+      "BackColor": "#ffcccc",
+      "FontColor": "#000000"
+    },
+    {
+      "Sequence": 2,
+      "Condition": "Year \u003E= currentYear - 5",
+      "BackColor": "#b2ff66",
+      "FontColor": "#000000"
+    }
+  ],
   "Version": 1,
   "PageTexts": {
     "OperationName": "Vehicle.Browser",
     "BrowserTabTitle": "Vehicle Browser",
-    "ControllerTitle": "",
-    "ActionTitle": "",
-    "ActionDescription": ""
+    "ControllerTitle": "Vehicle",
+    "ActionTitle": "Index",
+    "ActionDescription": "List of Vehicles"
   },
   "Layout": "~/Views/Shared/_Layout.cshtml"
 }

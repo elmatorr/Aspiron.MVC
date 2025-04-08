@@ -3,10 +3,10 @@
     "Columns": [
       {
         "FieldName": "Id",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "Key field",
+        "ShortText": "Key field",
         "Sequence": 0,
-        "Visible": false,
+        "Visible": true,
         "Width": 100,
         "ResponsivePriority": 1,
         "DataType": 9,
@@ -14,8 +14,8 @@
       },
       {
         "FieldName": "InvoiceNumber",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "InvoiceNumber",
+        "ShortText": "InvoiceNumber",
         "Sequence": 1,
         "Visible": true,
         "Width": 100,
@@ -25,8 +25,8 @@
       },
       {
         "FieldName": "CustomerName",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "CustomerName",
+        "ShortText": "CustomerName",
         "Sequence": 2,
         "Visible": true,
         "Width": 100,
@@ -36,8 +36,8 @@
       },
       {
         "FieldName": "CreatedAt",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "CreatedAt",
+        "ShortText": "CreatedAt",
         "Sequence": 3,
         "Visible": true,
         "Width": 100,
@@ -47,8 +47,8 @@
       },
       {
         "FieldName": "DueDate",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "DueDate",
+        "ShortText": "DueDate",
         "Sequence": 4,
         "Visible": true,
         "Width": 100,
@@ -57,11 +57,22 @@
         "MediaFormat": null
       },
       {
-        "FieldName": "Amount",
-        "HeaderText": null,
-        "ShortText": null,
-        "Sequence": 5,
+        "FieldName": "TotalAmount",
+        "HeaderText": "TotalAmount",
+        "ShortText": "TotalAmount",
+        "Sequence": 8,
         "Visible": true,
+        "Width": 100,
+        "ResponsivePriority": 1,
+        "DataType": 6,
+        "MediaFormat": null
+      },
+      {
+        "FieldName": "Amount",
+        "HeaderText": "Amount",
+        "ShortText": "Amount",
+        "Sequence": 5,
+        "Visible": false,
         "Width": 100,
         "ResponsivePriority": 1,
         "DataType": 6,
@@ -69,10 +80,10 @@
       },
       {
         "FieldName": "Status",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "Status",
+        "ShortText": "Status",
         "Sequence": 6,
-        "Visible": true,
+        "Visible": false,
         "Width": 100,
         "ResponsivePriority": 1,
         "DataType": 13,
@@ -80,21 +91,10 @@
       },
       {
         "FieldName": "TaxAmount",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "TaxAmount",
+        "ShortText": "TaxAmount",
         "Sequence": 7,
-        "Visible": true,
-        "Width": 100,
-        "ResponsivePriority": 1,
-        "DataType": 6,
-        "MediaFormat": null
-      },
-      {
-        "FieldName": "TotalAmount",
-        "HeaderText": null,
-        "ShortText": null,
-        "Sequence": 8,
-        "Visible": true,
+        "Visible": false,
         "Width": 100,
         "ResponsivePriority": 1,
         "DataType": 6,
@@ -108,10 +108,10 @@
         "DisplayText": "Edit",
         "OnClick": null,
         "IdField": "Id",
-        "Area": "",
+        "Area": null,
         "Controller": "Controller",
         "Action": "Details",
-        "UrlTemplate": "/Area/Controller/Details/__id__"
+        "UrlTemplate": "Controller/Details/__id__"
       }
     ]
   },
@@ -120,9 +120,9 @@
   "PageTexts": {
     "OperationName": "Invoice.Browser",
     "BrowserTabTitle": "Invoice Browser",
-    "ControllerTitle": "",
-    "ActionTitle": "",
-    "ActionDescription": ""
+    "ControllerTitle": "Invoices",
+    "ActionTitle": "Listing",
+    "ActionDescription": "List of Invoices"
   },
   "Layout": "~/Views/Shared/_Layout.cshtml"
 }

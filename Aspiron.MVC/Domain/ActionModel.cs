@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Aspiron.MVC.Domain
+﻿namespace Aspiron.MVC.Domain
 {
     public class ActionModel
     {
-        public string CssVisual { get; set; } // e.g., "btn-primary", "btn-secondary"
-        public string CssAction { get; set; } // e.g., "edit-btn", "delete-btn"
+        public string? CssVisual { get; set; } // e.g., "btn-primary", "btn-secondary"
+        public string? CssAction { get; set; } // e.g., "edit-btn", "delete-btn"
         public string DisplayText { get; set; } // e.g., "Details", "Delete"
 
         public string? OnClick { get; set; } // e.g., "addToWatchlist"
@@ -17,12 +11,12 @@ namespace Aspiron.MVC.Domain
         private string _idField = "Id"; // Default to "Id"
 
         // Field name to get the ID value from the row data 
-        public string IdField
+        public string? IdField
         {
             get => _idField;
             set => _idField = string.IsNullOrEmpty(value) ? "Id" : value;
         }
-        public string Area { get; set; } // 
+        public string? Area { get; set; } // 
         public string Controller { get; set; } // 
         public string Action { get; set; } // 
 
@@ -32,7 +26,9 @@ namespace Aspiron.MVC.Domain
         {
             get
             {
-                return $"/{Area}/{Controller}/{Action}/__id__";
+                return string.IsNullOrEmpty(Area)
+                    ? $"{Controller}/{Action}/__id__"
+                    : $"{Area}/{Controller}/{Action}/__id__";
             }
         }
 
@@ -41,7 +37,7 @@ namespace Aspiron.MVC.Domain
             CssVisual = "btn-primary";
             CssAction = "edit-btn";
             DisplayText = "Details";
-            Area = "";
+            Area = "Asset";
             Controller = "Controller";
             Action = "Details";
         }

@@ -3,10 +3,10 @@
     "Columns": [
       {
         "FieldName": "Id",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "Key field",
+        "ShortText": "Key field",
         "Sequence": 0,
-        "Visible": false,
+        "Visible": true,
         "Width": 100,
         "ResponsivePriority": 1,
         "DataType": 9,
@@ -14,8 +14,8 @@
       },
       {
         "FieldName": "FirstName",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "FirstName",
+        "ShortText": "FirstName",
         "Sequence": 1,
         "Visible": true,
         "Width": 100,
@@ -25,8 +25,8 @@
       },
       {
         "FieldName": "LastName",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "LastName",
+        "ShortText": "LastName",
         "Sequence": 2,
         "Visible": true,
         "Width": 100,
@@ -36,8 +36,8 @@
       },
       {
         "FieldName": "MiddleName",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "MiddleName",
+        "ShortText": "MiddleName",
         "Sequence": 3,
         "Visible": true,
         "Width": 100,
@@ -47,8 +47,8 @@
       },
       {
         "FieldName": "IsCompany",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "IsCompany",
+        "ShortText": "IsCompany",
         "Sequence": 4,
         "Visible": true,
         "Width": 100,
@@ -58,8 +58,8 @@
       },
       {
         "FieldName": "Birthdate",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "Birthdate",
+        "ShortText": "Birthdate",
         "Sequence": 5,
         "Visible": true,
         "Width": 100,
@@ -69,8 +69,8 @@
       },
       {
         "FieldName": "IdNo",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "IdNo",
+        "ShortText": "IdNo",
         "Sequence": 6,
         "Visible": true,
         "Width": 100,
@@ -80,10 +80,10 @@
       },
       {
         "FieldName": "Comments",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "Comments",
+        "ShortText": "Comments",
         "Sequence": 7,
-        "Visible": true,
+        "Visible": false,
         "Width": 100,
         "ResponsivePriority": 1,
         "DataType": 13,
@@ -91,10 +91,10 @@
       },
       {
         "FieldName": "StatusId",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "StatusId",
+        "ShortText": "StatusId",
         "Sequence": 8,
-        "Visible": true,
+        "Visible": false,
         "Width": 100,
         "ResponsivePriority": 1,
         "DataType": 9,
@@ -108,32 +108,21 @@
         "DisplayText": "Edit",
         "OnClick": null,
         "IdField": "Id",
-        "Area": "",
+        "Area": null,
         "Controller": "Controller",
         "Action": "Details",
-        "UrlTemplate": "/Area/Controller/Details/__id__"
+        "UrlTemplate": "Controller/Details/__id__"
       }
-    ],
-    "CondColors": []
+    ]
   },
-  "Action": {
-    "CssVisual": "btn-primary",
-    "CssAction": "edit-btn",
-    "DisplayText": "Details",
-    "OnClick": null,
-    "IdField": "Id",
-    "Area": "",
-    "Controller": "Controller",
-    "Action": "Details",
-    "UrlTemplate": "/Area/Controller/Details/__id__"
-  },
+  "CondColors": [],
   "Version": 1,
   "PageTexts": {
     "OperationName": "Person.Browser",
-    "BrowserTabTitle": "Person Browser",
-    "ControllerTitle": "",
-    "ActionTitle": "",
-    "ActionDescription": ""
+    "BrowserTabTitle": "Persons Browser",
+    "ControllerTitle": "Person",
+    "ActionTitle": "Index",
+    "ActionDescription": "List of persons"
   },
   "Layout": "~/Views/Shared/_Layout.cshtml"
 }

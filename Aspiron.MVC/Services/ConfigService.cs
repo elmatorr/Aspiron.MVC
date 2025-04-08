@@ -1,5 +1,6 @@
 ﻿using Aspiron.MVC.Contracts;
 using Aspiron.MVC.Domain;
+using Microsoft.AspNetCore.JsonPatch.Operations;
 
 namespace Aspiron.MVC.Services
 {
@@ -7,7 +8,6 @@ namespace Aspiron.MVC.Services
     {
         private readonly IConfigRepository _configRepository;
         private readonly ITranslationService _translationService;
-
 
         public ConfigService(IConfigRepository configRepository, ITranslationService translationService)
         {
@@ -22,7 +22,7 @@ namespace Aspiron.MVC.Services
 
         public async Task<BaseBrowserPageModel?> GetConfigValueAsync(string operationName, int? version = null)
         {
-            var result = await _configRepository.GetConfigValueAsync(operationName, version);
+            var result =  await _configRepository.GetConfigValueAsync(operationName, version);
             if (result == null) return result;
 
             result.PageTexts.BrowserTabTitle = await _translationService.GetTranslationAsync(result.PageTexts.BrowserTabTitle, result.PageTexts.BrowserTabTitle);
@@ -33,7 +33,7 @@ namespace Aspiron.MVC.Services
             foreach (var column in result.TableColumns.Columns)
             {
                 column.HeaderText = await _translationService.GetTranslationAsync(column.HeaderText, column.HeaderText);
-                column.ShortText = await _translationService.GetTranslationAsync(column.ShortText, column.ShortText);
+                column.ShortText= await _translationService.GetTranslationAsync(column.ShortText, column.ShortText);
             }
 
             foreach (var action in result.TableColumns.Actions)

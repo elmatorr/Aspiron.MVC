@@ -6,6 +6,7 @@
 @{
     ViewData["Title"] = Model.PageTexts.BrowserTabTitle;
     var tableColumnsJson = JsonSerializer.Serialize(Model.TableColumns); // Serialize the Model.TableColumns
+    var condColorsJson = JsonSerializer.Serialize(Model.CondColors ?? new List<CondColorModel>()); // serialize CondColors
 }
 
 <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -40,14 +41,19 @@
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
-    <script src="~/js/datatables.dynamic.init.js"></script>
+
+    <!-- Library for calcualtion conditional coloring expressions -->
+    <script src="~/js/jison.js"></script>
+    <script src="~/js/filtrex.js"></script>
+    <script src="~/js/datatables.dynamic.init.js" asp-append-version="true"></script>
 
     <script>
         $(document).ready(function () {
-            const tableColumns = @Html.Raw(tableColumnsJson); // Use the serialized JSON string
-            const fetchUrl = '@Url.Action("FetchData")'; // Replace with your actual action URL
-            const baseUrl = '@Context.Request.Scheme://@Context.Request.Host/'; // Base URL for relative paths
-            initializeDynamicDataTable(tableColumns, "#dataTable", "#tableHeaders", baseUrl, fetchUrl);
+            const tableColumns = @Html.Raw(tableColumnsJson); // js object
+            const condColors = @Html.Raw(condColorsJson); // js object
+            const fetchUrl = "@Url.Action("FetchData")";
+            const baseUrl = "@Context.Request.Scheme://@Context.Request.Host/";
+            initializeDynamicDataTable(tableColumns, "#dataTable", "#tableHeaders", baseUrl, fetchUrl, condColors);
         });
     </script>
 }

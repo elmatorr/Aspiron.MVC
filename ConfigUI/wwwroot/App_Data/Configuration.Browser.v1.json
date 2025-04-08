@@ -3,8 +3,8 @@
     "Columns": [
       {
         "FieldName": "Key",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "Key",
+        "ShortText": "Key",
         "Sequence": 0,
         "Visible": true,
         "Width": 100,
@@ -14,8 +14,8 @@
       },
       {
         "FieldName": "Name",
-        "HeaderText": null,
-        "ShortText": null,
+        "HeaderText": "Name",
+        "ShortText": "Name",
         "Sequence": 1,
         "Visible": true,
         "Width": 100,
@@ -31,7 +31,18 @@
         "DisplayText": "Details",
         "OnClick": null,
         "IdField": "Key",
-        "Area": "",
+        "Area": null,
+        "Controller": "Configuration",
+        "Action": "Details",
+        "UrlTemplate": "Configuration/Details/__id__"
+      },
+      {
+        "CssVisual": "btn-danger",
+        "CssAction": "edit-btn",
+        "DisplayText": "Delete",
+        "OnClick": null,
+        "IdField": "Key",
+        "Area": null,
         "Controller": "Configuration",
         "Action": "Details",
         "UrlTemplate": "Configuration/Details/__id__"
@@ -42,10 +53,10 @@
   "Version": 1,
   "PageTexts": {
     "OperationName": "Configuration.Browser",
-    "BrowserTabTitle": "Configuration Browser",
+    "BrowserTabTitle": "Config Tool",
     "ControllerTitle": "Configuration",
     "ActionTitle": "Index",
-    "ActionDescription": ""
+    "ActionDescription": null
   },
   "Layout": "~/Views/Shared/_Layout.cshtml"
 }
