@@ -31,6 +31,14 @@ namespace Aspiron.MVC.Domain
 
         public List<ActionModel> Actions { get; set; } // New property for buttons
 
+        public void AddColumn(TableColumnModel column)
+        {
+            if (column != null)
+            {
+                _columns.Add(column);
+            }
+        }
+
         public TableColumnsModel()
         {
             _columns = [];

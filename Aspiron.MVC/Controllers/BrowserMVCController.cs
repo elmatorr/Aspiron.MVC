@@ -73,7 +73,7 @@ namespace Aspiron.MVC.Controllers
                     Width = 100,
                     DataType = MapToEnumBasicDataTypes(prop.PropertyType)
                 };
-                pageConf.TableColumns.Columns.Add(column);
+                pageConf.TableColumns.AddColumn(column);
                 columnCounter++;
 
                 // Add button configurations if needed
